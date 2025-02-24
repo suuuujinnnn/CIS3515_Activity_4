@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -12,15 +13,18 @@ class MainActivity : AppCompatActivity() {
         val spinner = findViewById<Spinner>(R.id.spinner)
         val displayTextView = findViewById<TextView>(R.id.textDisplay)
 
-        /* TODO Step 2: Populate this array with multiples of 5 from 5 - 100*/
-        //val numberArray = Array Of Numbers
+        val numberArray = (5..100 step 5).toList()
 
-        /* TODO Step 3: Create adapter to display items from array in Spinner */
-        //spinner.adapter = ArrayAdapter...
+        spinner.adapter = TextSizeAdapter(this, numberArray)
 
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val selectedSize = numberArray[position]
+                displayTextView.text = "Selected: $selectedSize sp"
+                displayTextView.textSize = selectedSize.toFloat()
+            }
 
-        // TODO Step 4: Change TextView's text size to the number selected in the Spinner */
-        //spinner.onItemSelectedListener = object: ...
-
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
     }
 }

@@ -9,9 +9,6 @@
     <!-- TODO Step 1: Modify View attributes so views stay in place as arranged-->
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:minHeight="48dp"
         tools:layout_editor_absoluteX="136dp"
         tools:layout_editor_absoluteY="64dp" />
